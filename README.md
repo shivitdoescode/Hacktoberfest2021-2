@@ -1,2 +1,2 @@
 # Hacktoberfest-2020
-Pull requests for your hacktoberfest 2020
+A maintainer repo for HACKTOBERFEST 2020
