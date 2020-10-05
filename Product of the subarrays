@@ -1,0 +1,20 @@
+//code that finds the product of the subarrays
+#include <bits/stdc++.h>
+using namespace std;
+int product(int arr[], int n){
+long long int pro=1, frequency;
+frequency = pow(2,n-1);
+cout<<frequency<<endl;
+for(int i=0;i<n;i++){
+pro*=(int)pow(arr[i],frequency+0.5);
+}	
+cout<<pro;
+}
+		
+int main(){
+int n, arr[100];
+cin>>n;
+for(int i= 0;i<n;i++)
+cin>>arr[i];
+product(arr, n);	
+}
