@@ -1,2 +1,2 @@
-# Hacktoberfest-2020
-A maintainer repo for HACKTOBERFEST 2020
+# Hacktoberfest-2021
+A maintainer repo for HACKTOBERFEST 2021

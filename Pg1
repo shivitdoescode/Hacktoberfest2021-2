@@ -1,0 +1,147 @@
+/*
+1) Write a java program to implement the following class hierarchy. Show the use of
+dynamic method dispatch. In addition to all operations, show the order of execution for
+constructors and demostrate the use of super keyword. Verify the balance and limit while
+performing deposit and withdraw method in respective classes.
+Class : Account
+Members: accno, name, type, balance
+Methods: constructors, displayAcDetails()
+Class : SavingAccount (inherits Account)
+Members : minbal, withdrawlimit, interest
+Methods: consturctors, displayAcDetails(), deposit(), withdraw() 
+Class: CurrentAccount (inherits Account)
+Members : withdrawlimit, noofTxperday, interest
+Methods: consturctors, displayAcDetails(), deposit(), withdraw() 
+
+
+*/
+
+
+import java.util.Scanner;
+
+class Account
+{
+	int accno;
+	String name,type;
+	double balance;
+	Account(int a,String b,String c,double d)
+	{
+		accno=a;
+		name=b;
+		type=c;
+		balance=d;
+	}
+	
+	void displayAcDetails()
+	{
+		System.out.println();
+		System.out.println("Account class data:");
+		System.out.println("account number : "+accno);
+		System.out.println("name : "+name);
+		System.out.println("type : "+type);
+		System.out.println("balance : "+balance);
+		System.out.println();
+	}
+}
+class SavingAccount extends Account
+{
+	int minbal,withdrawlimit,interest,depositbalance,withdrawbalance;
+	SavingAccount(int e,String f,String g,double h,int i,int j,int k)
+	{ super(e,f,g,h);
+		minbal=i;
+		withdrawlimit=j;
+		interest=k;
+	}
+	Scanner sc=new Scanner(System.in);
+	
+	void displayAcDetails()
+	{
+		System.out.println();
+		System.out.println("Saving Account class data:");
+		System.out.println("account number : "+accno);
+		System.out.println("name : "+name);
+		System.out.println("type : "+type);
+		System.out.println("balance : "+balance);
+		System.out.println();
+	}
+	void deposit()
+	{System.out.println();
+		System.out.println("Saving Account data:");
+		System.out.println("enter the amount u want to deposite : ");
+	 depositbalance=sc.nextInt();
+		balance=balance+depositbalance;
+		System.out.println("after deposite the balance is : "+balance);
+	}
+	void withdraw()
+	{System.out.println();
+		System.out.println("Saving Account data:");
+		System.out.println("enter the amount u want to withdraw : ");
+
+		 withdrawbalance=sc.nextInt();
+		 if(withdrawbalance<=balance && withdrawbalance<=withdrawlimit)
+		{balance=balance-withdrawbalance;
+		System.out.println("after withdraw the balance is : "+balance);
+		}
+	}
+}
+class CurrentAccount extends Account
+{
+	int withdrawlimit,nooftxperday,interest,depositbalance,withdrawbalance;
+	CurrentAccount(int l,String m,String n,double o,int p,int q,int r)
+	{super(l,m,n,o);
+		withdrawlimit=p;
+		nooftxperday=q;
+		interest=r;
+	}
+	void displayAcDetails()
+	{
+		System.out.println();
+		System.out.println("Current Account data:");
+		System.out.println("account number : "+accno);
+		System.out.println("name : "+name);
+		System.out.println("type : "+type);
+		System.out.println("balance : "+balance);
+	}
+	Scanner sc=new Scanner(System.in);
+	void deposit()
+	{System.out.println();
+		System.out.println("Current Account data:");
+		System.out.println("enter the amount u want to deposite : ");
+	 depositbalance=sc.nextInt();
+		balance=balance+depositbalance;
+		System.out.println("after deposite the balance is : "+balance);
+	}
+	void withdraw()
+	{System.out.println();
+		System.out.println("Current Account data:");
+		System.out.println("enter the amount u want to withdraw : ");
+
+		 withdrawbalance=sc.nextInt();
+		 if(withdrawbalance<=withdrawlimit && withdrawbalance<=balance)
+		{balance=balance-withdrawbalance;
+		System.out.println("after withdraw the balance is : "+balance);
+		}
+	}
+	
+	
+}
+public class Pg1 {
+
+	public static void main(String[] args) {
+		Account S=new Account(123,"Aakanksha","SavingAccount",900000.9);
+		SavingAccount T=new SavingAccount(456,"Raj","SavingAccount",70000.6,1000,40000,5);
+		CurrentAccount U=new CurrentAccount(789,"Jiya","CurrentAccount",600000.5,30000,4,3);
+		Account R;
+		R=S;
+		R.displayAcDetails();
+		R=T;
+		R.displayAcDetails();
+        R=U;
+        R.displayAcDetails();
+		T.deposit();
+		T.withdraw();
+		U.deposit();
+		U.withdraw();
+	}
+
+}
